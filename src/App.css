@@ -1,0 +1,35 @@
+body {
+  background-color:rgb(49, 49, 49); 
+  padding: 0px; 
+  margin: 0px; 
+  font-family: Tahoma, sans-serif; 
+  color: rgb(203, 250, 255); 
+  background-size: 75px 75px;
+  background-image:
+  linear-gradient(to right, rgb(63, 63, 63) 1px, transparent 3px),
+  linear-gradient(to bottom, rgb(63, 63, 63) 1px, transparent 3px);
+}
+
+#topdiv {
+  background-size: 75px 75px;
+  background-image:
+  linear-gradient(to right, rgb(46, 72, 75) 1px, transparent 3px),
+  linear-gradient(to bottom, rgb(46, 72, 75) 1px, transparent 3px);
+}
+
+h1 {
+  position: relative; 
+  font-size: 60px; 
+  margin: 0; 
+  padding-top: 60px;
+  padding-bottom: 60px;  
+  text-align: center; 
+}
+
+#hbottom {
+  text-indent: 80px;
+}
+
+#bottom-text {
+  vertical-align: top;
+}
