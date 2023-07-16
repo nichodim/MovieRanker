@@ -47,23 +47,48 @@ h1 {
   vertical-align: top;
 }
 
+#score {
+  position: absolute;  
+  top: -20px; 
+  left: 65px; 
+  text-align: center; 
+  color: rgb(46, 72, 75); 
+  font-weight: bold; 
+  font-size: 275px; 
+}
+#score-text {
+  display: block;
+  font-size: 40px;
+  color: rgb(203, 250, 255); 
+  font-weight:normal; 
+}
+
+.scorestuff {
+  padding: 15px; 
+  background-color: rgb(49, 49, 49); 
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
 #gamediv {
   display: flex; 
   text-align: center;
-  margin: 120px 20px 20px 10px; 
+  margin: 120px 30px 0 30px; 
 }
 #VSdiv {
   margin: 0 30px 0 30px; 
   font-size: 45px; 
   font-weight: bold; 
   display: inline-block;
-  vertical-align: middle;
+  height: 500px; 
+}
+#VStext {
+  margin-top: 220px; 
 }
 .option-box1 {
   background-color: rgb(49, 49, 49); 
   border:rgba(203, 250, 255, 0.664) solid 3px; 
   display: inline-block;
-  vertical-align: middle;
   height: 500px; 
   flex: 1 1 0px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -72,7 +97,6 @@ h1 {
   background-color: rgb(49, 49, 49); 
   border:#fff6b3a4 solid 3px; 
   display: inline-block;
-  vertical-align: middle;
   height: 500px; 
   flex: 1 1 0px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);

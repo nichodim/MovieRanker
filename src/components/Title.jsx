@@ -1,8 +1,10 @@
+import Score from './Score.jsx'
 import MovieLogo from './Movie.jsx'
 
-function Title() {
+function Title({ scr }) {
     return (
         <>
+            <Score s={scr} />
             <h1>
                 <div id='top-title'>Movie</div>
                 <div id='hbottom'>
