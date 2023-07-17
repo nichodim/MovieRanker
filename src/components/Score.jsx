@@ -1,4 +1,3 @@
 export default function Score({ s }) {
-    //<span id='score-text'>Score </span>
-    return <div id='score'>{s}</div>; 
+    return <div key={Math.random()} className='anim' id='score'>{s}</div>; 
 }

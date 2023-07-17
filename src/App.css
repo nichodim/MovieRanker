@@ -47,6 +47,13 @@ h1 {
   vertical-align: top;
 }
 
+#moviesvg {
+  transition: all 1s ease; 
+}
+#moviesvg:hover {
+  transform: rotate(1turn);
+}
+
 #score {
   position: absolute;  
   top: -20px; 
@@ -56,18 +63,13 @@ h1 {
   font-weight: bold; 
   font-size: 275px; 
 }
-#score-text {
-  display: block;
-  font-size: 40px;
-  color: rgb(203, 250, 255); 
-  font-weight:normal; 
+.anim {
+  animation: 0.5s anim; 
 }
-
-.scorestuff {
-  padding: 15px; 
-  background-color: rgb(49, 49, 49); 
-  border:rgba(203, 250, 255, 0.664) solid 3px; 
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+@keyframes anim {
+  0%   {color: rgb(46, 72, 75); }
+  50%  {color: rgb(203, 250, 255); }
+  100% {color: rgb(46, 72, 75); }
 }
 
 #gamediv {

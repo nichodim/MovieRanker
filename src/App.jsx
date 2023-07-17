@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Title from './components/Title.jsx'
 import MovieOption from './components/MovieOption.jsx'
 import './App.css'
@@ -10,6 +10,10 @@ function App() {
     contest: {name: 'rightMovie', cover: 'image.png', rating: 8.4}
   })
 
+  useEffect(() => {
+    // fetch first active movie
+  }, []); 
+
   function chosenMovie(chosen) {
     let notChosen = 'contest'; 
     if (chosen == 'contest') notChosen = 'active'; 
@@ -17,7 +21,7 @@ function App() {
     if (movies[chosen].rating >= movies[notChosen].rating) {
       setScore(prev => prev + 1); 
       setMovies(prev => {
-        // Change contest to be newly fetched movie fr next round
+        // Change contest to be newly fetched movie for next round
         return {active: prev[chosen], contest: prev[notChosen]}
       }); 
     } else {
