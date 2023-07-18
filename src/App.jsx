@@ -5,15 +5,15 @@ import './App.css'
 
 function App() {
   const [score, setScore] = useState(0); 
-  const [nextMovie, setNextMovie] = useState({name: 'leftMovie', cover: 'image.png', rating: 8.5}); 
+  const [nextMovie, setNextMovie] = useState({name: 'placeholder', cover: 'image.png', rating: 8.5}); 
   const [movies, setMovies] = useState({
-    active: {name: 'leftMovie', cover: 'image.png', rating: 8.5}, 
-    contest: {name: 'rightMovie', cover: 'image.png', rating: 8.4}
+    active: {name: 'placeholder', cover: 'image.png', rating: 8.5}, 
+    contest: {name: 'placeholder', cover: 'image.png', rating: 8.4}
   })
 
   function findMovie() {
     // find random popular movie name
-    const furthestPage = 5; 
+    const furthestPage = 8; 
     const pageNo = `${Math.floor(Math.random() * furthestPage) + 1}`; 
     const randomNo = Math.floor(Math.random() * 20); 
 
@@ -54,10 +54,19 @@ function App() {
 
   useEffect(() => {
     findMovie(); 
+    findMovie(); 
   }, []); 
 
   useEffect(() => {
-    console.log(nextMovie); 
+    if (movies.active.name == 'placeholder') {
+      setMovies(prev => {
+        return {...prev, active: nextMovie}; 
+      })
+    } else if (movies.contest.name == 'placeholder') {
+      setMovies(prev => {
+        return {...prev, contest: nextMovie}; 
+      })
+    }
   }, [nextMovie]); 
 
   return (
