@@ -75,15 +75,11 @@ function App() {
         <Title scr={score} />
       </div>
       <div id='gamediv'>
-        <div className='option-box1'>
-          <MovieOption mov={movies.active} position='active' handleClick={chosenMovie} />
-        </div>
+        <MovieOption mov={movies.active} position='active' handleClick={chosenMovie} />
         <div id='VSdiv'>
           <p id='VStext'>VS</p>
         </div>
-        <div className='option-box2'>
-          <MovieOption mov={movies.contest} position='contest' handleClick={chosenMovie} />
-        </div>
+        <MovieOption mov={movies.contest} position='contest' handleClick={chosenMovie} />
       </div>
     </div>
   )

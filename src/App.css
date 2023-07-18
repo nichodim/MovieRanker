@@ -20,6 +20,11 @@ h1 {
   right: 40px; 
 }
 
+p {
+  word-break: break-all;
+  white-space: normal;
+}
+
 #main {
   animation: fadeInAnimation ease 1.5s;
   animation-iteration-count: 1;
@@ -73,33 +78,74 @@ h1 {
 }
 
 #gamediv {
+  max-width: 100%; 
   display: flex; 
+  flex-direction: row; 
   text-align: center;
-  margin: 120px 30px 0 30px; 
+  margin: 120px 5% 0 5%; 
 }
+
 #VSdiv {
-  margin: 0 30px 0 30px; 
+  margin: 0 3% 0 3%; 
   font-size: 45px; 
   font-weight: bold; 
   display: inline-block;
   height: 500px; 
+  flex-basis: 15%; 
 }
 #VStext {
   margin-top: 220px; 
 }
-.option-box1 {
+
+.option-box-active {
   background-color: rgb(49, 49, 49); 
   border:rgba(203, 250, 255, 0.664) solid 3px; 
+  color: rgb(203, 250, 255); 
   display: inline-block;
+  margin-right: 0px; 
   height: 500px; 
-  flex: 1 1 0px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  flex-basis: 100%; 
 }
-.option-box2 {
+.option-box-contest {
   background-color: rgb(49, 49, 49); 
   border:#fff6b3a4 solid 3px; 
+  color: #fff7ba; 
   display: inline-block;
+  margin-left: 0px; 
   height: 500px; 
-  flex: 1 1 0px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  flex-basis: 100%; 
+}
+
+.cover-active {
+  height: 300px; 
+  max-width: 90%; 
+}
+.cover-contest {
+  height: 300px; 
+  max-width: 90%; 
+}
+
+.option-btn-active {
+  background-color: rgb(49, 49, 49); 
+  padding: 10px; 
+  color: rgb(203, 250, 255); 
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.option-btn-active:hover {
+  background-color: rgb(71, 71, 71); 
+  cursor: pointer;
+}
+.option-btn-contest {
+  background-color: rgb(49, 49, 49); 
+  padding: 10px; 
+  color: #fff7ba; 
+  border:#fff6b3a4 solid 3px; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.option-btn-contest:hover {
+  background-color: rgb(71, 71, 71); 
+  cursor: pointer;
 }
