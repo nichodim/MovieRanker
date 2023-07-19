@@ -204,11 +204,12 @@ p {
   color: rgba(203, 250, 255, 0.664); 
   margin: 50px; 
   text-align: center; 
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 .high-score {
   border:#fff6b3a4 solid 3px; 
   color: #fff7ba;  
-  margin: 50px 200px 30px 200px; 
+  margin: 50px 200px 40px 200px; 
 }
 .scr-text {
   border-bottom: #fff6b3a4 solid 3px; 
@@ -217,10 +218,12 @@ p {
 .scr {
   font-size: 40px; 
   font-weight: bold; 
+  border-left: #fff6b3a4 solid 3px; 
+  border-right: #fff6b3a4 solid 3px; 
 }
 
 .play-btn {
-  margin: 30px 30px 50px 30px; 
+  margin: 40px 30px 50px 30px; 
   padding: 40px 120px; 
   border:rgba(203, 250, 255, 0.664) solid 3px; 
   background-color: rgb(49, 49, 49); 

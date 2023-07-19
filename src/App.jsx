@@ -6,6 +6,7 @@ import './App.css'
 
 function App() {
   const [started, setStarted] = useState(false); 
+  const [loading, setLoading] = useState(false); 
   const [score, setScore] = useState(0); 
   const [nextMovie, setNextMovie] = useState({name: 'placeholder', cover: 'image.png', rating: 8.5, failed: false}); 
   const [movies, setMovies] = useState({
@@ -29,7 +30,7 @@ function App() {
           method: 'GET', 
           url: OMDburl + d.results[randomNo].title, 
           success: function(d) {
-            if (d.Title == 'N/A' || d.Ratings[0].Source != 'Internet Movie Database' || d.Poster == 'N/A') findMovie(); 
+            if (d == undefined || d.Ratings.length == 0 || d.Title == 'N/A' || d.Ratings[0].Source != 'Internet Movie Database' || d.Poster == 'N/A') findMovie(); 
             else setNextMovie(() => {
               return {name: d.Title, cover: d.Poster, rating: d.Ratings[0].Value, failed: false}
             }); 
@@ -40,10 +41,12 @@ function App() {
   }
 
   function startGame() {
+    setScore(() => 0); 
     setStarted(() => true); 
   }
 
   function chosenMovie(chosen) {
+    setLoading(() => true); 
     let notChosen = 'contest'; 
     if (chosen == 'contest') notChosen = 'active'; 
 
@@ -52,6 +55,7 @@ function App() {
       movies[notChosen].failed = true; 
       findMovie(); 
     } else {
+      setLoading(() => false); 
       setStarted(() => false); 
     }
   }
@@ -60,6 +64,9 @@ function App() {
     findMovie(); 
     findMovie(); 
   }, []); 
+
+  useEffect(() => {
+  }, [movies, loading]); 
 
   useEffect(() => {
     if (localStorage.getItem('score') < score) localStorage.setItem('score', `${score}`);
@@ -76,13 +83,14 @@ function App() {
       }); 
     } else if (movies.active.failed) {
       setMovies(prev => {
-        return {...prev, active: nextMovie}; 
-      }); 
-      setMovies(prev => {
-        return {active: prev.contest, contest: prev.active}; 
+        return {active: prev.contest, contest: nextMovie}; 
       }); 
     }
+    setLoading(() => false); 
   }, [nextMovie]); 
+
+  useEffect(() => {
+  }, [movies, loading]); 
 
   return (
     <div id='main'>
@@ -90,7 +98,7 @@ function App() {
         <Title scr={score} />
       </div>
 
-      {started &&
+      {started && !loading &&
         <div id='gamediv'>
           <MovieOption mov={movies.active} position='active' handleClick={chosenMovie} />
           <div id='VSdiv'>
@@ -98,6 +106,9 @@ function App() {
           </div>
           <MovieOption mov={movies.contest} position='contest' handleClick={chosenMovie} />
         </div>
+      }
+      {loading && 
+        <p>WAIT</p>
       }
       {!started && 
         <Menu handleClick={startGame} />
