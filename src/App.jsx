@@ -56,14 +56,25 @@ function App() {
       movies[notChosen].failed = true; 
       findMovie(); 
     } else {
+      reLoadMovies(); 
       setLoading(() => false); 
       setStarted(() => false); 
     }
   }
 
+  function reLoadMovies() {
+    setMovies(prev => {
+      return {...prev, active: {name: 'placeholder', cover: 'image.png', rating: 8.5, failed: false}}; 
+    })
+    findMovie(); 
+    setMovies(prev => {
+      return {...prev, contest: {name: 'placeholder', cover: 'image.png', rating: 8.4, failed: false}}; 
+    })
+    findMovie(); 
+  }
+
   useEffect(() => {
-    findMovie(); 
-    findMovie(); 
+    reLoadMovies(); 
   }, []); 
 
   useEffect(() => {
