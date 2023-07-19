@@ -3,7 +3,6 @@ function MovieOption({ mov, position, handleClick }) {
         <div className={'option-box-' + position} onClick={e => handleClick(position)} >
             <p className='cover-title' >{mov.name}</p>
             <img className={'cover-' + position} src={mov.cover} />
-            <p>Rating: {mov.rating}</p>
             <p>Rating: {position == 'active' ? mov.rating : '?'}</p>
         </div>
     )

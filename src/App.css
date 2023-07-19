@@ -266,3 +266,9 @@ p {
   0% {padding: 60px; }
   100% {padding: 20px; }
 }
+
+.load {
+  position: absolute; 
+  top: 0px; 
+  right: 25px; 
+}

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Menu from './components/Menu.jsx'
 import Title from './components/Title.jsx'
+import Load from './components/Load.jsx'
 import MovieOption from './components/MovieOption.jsx'
 import './App.css'
 
@@ -30,7 +31,7 @@ function App() {
           method: 'GET', 
           url: OMDburl + d.results[randomNo].title, 
           success: function(d) {
-            if (d == undefined || d.Ratings.length == 0 || d.Title == 'N/A' || d.Ratings[0].Source != 'Internet Movie Database' || d.Poster == 'N/A') findMovie(); 
+            if (d == undefined || d.Ratings == undefined || d.Ratings.length == 0 || d.Title == 'N/A' || d.Ratings[0].Source != 'Internet Movie Database' || d.Poster == 'N/A') findMovie(); 
             else setNextMovie(() => {
               return {name: d.Title, cover: d.Poster, rating: d.Ratings[0].Value, failed: false}
             }); 
@@ -108,7 +109,7 @@ function App() {
         </div>
       }
       {loading && 
-        <p>WAIT</p>
+        <Load />
       }
       {!started && 
         <Menu handleClick={startGame} />
