@@ -4,11 +4,12 @@ import MovieOption from './components/MovieOption.jsx'
 import './App.css'
 
 function App() {
+  const [started, setStarted] = useState(true); 
   const [score, setScore] = useState(0); 
-  const [nextMovie, setNextMovie] = useState({name: 'placeholder', cover: 'image.png', rating: 8.5}); 
+  const [nextMovie, setNextMovie] = useState({name: 'placeholder', cover: 'image.png', rating: 8.5, failed: false}); 
   const [movies, setMovies] = useState({
-    active: {name: 'placeholder', cover: 'image.png', rating: 8.5}, 
-    contest: {name: 'placeholder', cover: 'image.png', rating: 8.4}
+    active: {name: 'placeholder', cover: 'image.png', rating: 8.5, failed: false}, 
+    contest: {name: 'placeholder', cover: 'image.png', rating: 8.4, failed: false}
   })
 
   function findMovie() {
@@ -29,7 +30,7 @@ function App() {
           success: function(d) {
             if (d.Title == 'N/A' || d.Ratings[0].Source != 'Internet Movie Database' || d.Poster == 'N/A') findMovie(); 
             else setNextMovie(() => {
-              return {name: d.Title, cover: d.Poster, rating: d.Ratings[0].Value}
+              return {name: d.Title, cover: d.Poster, rating: d.Ratings[0].Value, failed: false}
             }); 
           }
         }); 
@@ -43,12 +44,10 @@ function App() {
 
     if (movies[chosen].rating >= movies[notChosen].rating) {
       setScore(prev => prev + 1); 
-      setMovies(prev => {
-        // Change contest to be newly fetched movie for next round
-        return {active: prev[chosen], contest: prev[notChosen]}
-      }); 
+      movies[notChosen].failed = true; 
+      findMovie(); 
     } else {
-      setScore(prev => 0); 
+      setStarted(() => false); 
     }
   }
 
@@ -58,14 +57,25 @@ function App() {
   }, []); 
 
   useEffect(() => {
+    if (localStorage.getItem('score') < score) localStorage.setItem('score', `${score}`);
+  }, [score])
+
+  useEffect(() => {
     if (movies.active.name == 'placeholder') {
       setMovies(prev => {
         return {...prev, active: nextMovie}; 
-      })
-    } else if (movies.contest.name == 'placeholder') {
+      }); 
+    } else if (movies.contest.name == 'placeholder' || movies.contest.failed) {
       setMovies(prev => {
         return {...prev, contest: nextMovie}; 
-      })
+      }); 
+    } else if (movies.active.failed) {
+      setMovies(prev => {
+        return {...prev, active: nextMovie}; 
+      }); 
+      setMovies(prev => {
+        return {active: prev.contest, contest: prev.active}; 
+      }); 
     }
   }, [nextMovie]); 
 
@@ -74,13 +84,19 @@ function App() {
       <div id='topdiv'>
         <Title scr={score} />
       </div>
-      <div id='gamediv'>
-        <MovieOption mov={movies.active} position='active' handleClick={chosenMovie} />
-        <div id='VSdiv'>
-          <p id='VStext'>VS</p>
+
+      {started &&
+        <div id='gamediv'>
+          <MovieOption mov={movies.active} position='active' handleClick={chosenMovie} />
+          <div id='VSdiv'>
+            <p id='VStext'>VS</p>
+          </div>
+          <MovieOption mov={movies.contest} position='contest' handleClick={chosenMovie} />
         </div>
-        <MovieOption mov={movies.contest} position='contest' handleClick={chosenMovie} />
-      </div>
+      }
+      {!started && 
+        <p>not started</p>
+      }
     </div>
   )
 }
