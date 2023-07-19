@@ -97,55 +97,117 @@ p {
   margin-top: 220px; 
 }
 
+.cover-title {
+  font-weight: bold; 
+  font-size: 30px; 
+}
 .option-box-active {
   background-color: rgb(49, 49, 49); 
   border:rgba(203, 250, 255, 0.664) solid 3px; 
-  color: rgb(203, 250, 255); 
+  color: rgba(203, 250, 255, 0.664); 
   display: inline-block;
   margin-right: 0px; 
-  height: 500px; 
+  height: 550px; 
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   flex-basis: 100%; 
 }
 .option-box-contest {
   background-color: rgb(49, 49, 49); 
   border:#fff6b3a4 solid 3px; 
-  color: #fff7ba; 
+  color: #fff6b3a4; 
   display: inline-block;
   margin-left: 0px; 
-  height: 500px; 
+  height: 550px; 
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   flex-basis: 100%; 
+}
+.option-box-active:hover {
+  cursor: pointer;
+  animation-name: box-active-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+@keyframes box-active-anim {
+  0% {
+    background-color: rgb(49, 49, 49); 
+    border:rgba(203, 250, 255, 0.664) solid 3px; 
+    color: rgba(203, 250, 255, 0.664); 
+  }
+  100% {
+    background-color: rgb(71, 71, 71); 
+    border:rgb(203, 250, 255) solid 3px; 
+    color: rgb(203, 250, 255); 
+  }
+}
+.option-box-active:hover > .cover-active {
+  animation-name: cover-anim-open; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+.option-box-active:active {
+  animation-name: success-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+}
+
+.option-box-contest:hover {
+  cursor: pointer;
+  animation-name: box-contest-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+@keyframes box-contest-anim {
+  0% {
+    background-color: rgb(49, 49, 49); 
+    border:#fff6b3a4 solid 3px; 
+    color: #fff6b3a4; 
+  }
+  100% {
+    background-color: rgb(71, 71, 71); 
+    border:#fff6b3 solid 3px; 
+    color: #fff7ba;  
+  }
+}
+.option-box-contest:hover > .cover-contest {
+  animation-name: cover-anim-open; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+.option-box-contest:active {
+  animation-name: success-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+}
+@keyframes success-anim {
+  0% {background-color: rgb(71, 71, 71); }
+  100% {background-color:rgb(92, 92, 92); }
 }
 
 .cover-active {
   height: 300px; 
   max-width: 90%; 
+  opacity: 0.7; 
+  padding: 15px; 
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
 }
 .cover-contest {
   height: 300px; 
   max-width: 90%; 
-}
-
-.option-btn-active {
-  background-color: rgb(49, 49, 49); 
-  padding: 10px; 
-  color: rgb(203, 250, 255); 
-  border:rgba(203, 250, 255, 0.664) solid 3px; 
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-}
-.option-btn-active:hover {
-  background-color: rgb(71, 71, 71); 
-  cursor: pointer;
-}
-.option-btn-contest {
-  background-color: rgb(49, 49, 49); 
-  padding: 10px; 
-  color: #fff7ba; 
+  opacity: 0.7; 
+  padding: 15px; 
   border:#fff6b3a4 solid 3px; 
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
-.option-btn-contest:hover {
-  background-color: rgb(71, 71, 71); 
-  cursor: pointer;
+@keyframes cover-anim-open {
+  0% {
+    padding: 15px; 
+    opacity: 0.7; 
+  }
+  100% {
+    padding: 5px; 
+    opacity: 1; 
+  }
 }
