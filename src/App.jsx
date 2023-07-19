@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
+import Menu from './components/Menu.jsx'
 import Title from './components/Title.jsx'
 import MovieOption from './components/MovieOption.jsx'
 import './App.css'
 
 function App() {
-  const [started, setStarted] = useState(true); 
+  const [started, setStarted] = useState(false); 
   const [score, setScore] = useState(0); 
   const [nextMovie, setNextMovie] = useState({name: 'placeholder', cover: 'image.png', rating: 8.5, failed: false}); 
   const [movies, setMovies] = useState({
@@ -36,6 +37,10 @@ function App() {
         }); 
       }
     }); 
+  }
+
+  function startGame() {
+    setStarted(() => true); 
   }
 
   function chosenMovie(chosen) {
@@ -95,7 +100,7 @@ function App() {
         </div>
       }
       {!started && 
-        <p>not started</p>
+        <Menu handleClick={startGame} />
       }
     </div>
   )

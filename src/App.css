@@ -108,7 +108,6 @@ p {
   border:rgba(203, 250, 255, 0.664) solid 3px; 
   color: rgba(203, 250, 255, 0.664); 
   display: inline-block;
-  margin-right: 0px; 
   min-height: 550px; 
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   flex-basis: 100%; 
@@ -118,7 +117,6 @@ p {
   border:#fff6b3a4 solid 3px; 
   color: #fff6b3a4; 
   display: inline-block;
-  margin-left: 0px; 
   min-height: 550px; 
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
   flex-basis: 100%; 
@@ -198,4 +196,70 @@ p {
     padding: 5px; 
     opacity: 1; 
   }
+}
+
+.menu {
+  background-color: rgb(49, 49, 49); 
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
+  color: rgba(203, 250, 255, 0.664); 
+  margin: 50px; 
+  text-align: center; 
+}
+.high-score {
+  border:#fff6b3a4 solid 3px; 
+  color: #fff7ba;  
+  margin: 50px 200px 30px 200px; 
+}
+.scr-text {
+  border-bottom: #fff6b3a4 solid 3px; 
+  padding-bottom: 20px; 
+}
+.scr {
+  font-size: 40px; 
+  font-weight: bold; 
+}
+
+.play-btn {
+  margin: 30px 30px 50px 30px; 
+  padding: 40px 120px; 
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
+  background-color: rgb(49, 49, 49); 
+  color:rgba(203, 250, 255, 0.664); 
+  font-weight: bold; 
+  font-size: 60px; 
+}
+.play-btn:hover {
+  cursor: pointer;
+  animation-name: play-btn-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+@keyframes play-btn-anim {
+  0% {
+    border:rgba(203, 250, 255, 0.664) solid 3px; 
+    background-color: rgb(49, 49, 49); 
+    color:rgba(203, 250, 255, 0.664); 
+    padding: 40px 120px; 
+  }
+  100% {
+    border:rgb(203, 250, 255) solid 3px; 
+    background-color: rgb(71, 71, 71); 
+    color:rgb(203, 250, 255); 
+    padding: 40px 60px; 
+  }
+}
+.play-btn:hover > .play-text {
+  animation-name: play-text-anim; 
+  animation-timing-function: ease;
+  animation-duration: 0.33s; 
+  animation-fill-mode: forwards;
+}
+.play-text {
+  border:rgba(203, 250, 255, 0.664) solid 3px; 
+  padding: 60px; 
+}
+@keyframes play-text-anim {
+  0% {padding: 60px; }
+  100% {padding: 20px; }
 }
